@@ -1,5 +1,7 @@
 # Dr. Memory Fuzzer Test
 
+[![AppVeyor](https://ci.appveyor.com/api/projects/status/yif1aupyhskg80wa/branch/master?svg=true)](https://ci.appveyor.com/project/mloskot/drmemory-fuzzer-test/branch/master)
+
 Testing Dr. Memory fuzz testing capabilities on Windows using Visual Studio.
 
 See [Dr. Memory's fuzz testing Windows with .exe](https://groups.google.com/d/msg/drmemory-users/0K3ul1U_pKo/6rNG6oRVBgAJ)
