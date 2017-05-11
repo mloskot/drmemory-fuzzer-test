@@ -19,7 +19,7 @@ install:
     (New-Object Net.WebClient).DownloadFile('https://github.com/DynamoRIO/drmemory/releases/download/release_1.11.0/DrMemory-Windows-1.11.0-2.msi', $drmemoryMsi)
     msiexec /i $drmemoryMsi /quiet /qn /norestart
     $env:Path += "C:\Program Files (x86)\Dr. Memory\bin"
-    drmemory.exe -version
+    "C:\Program Files (x86)\Dr. Memory\bin\drmemory.exe" -version
 
 build: off
 
