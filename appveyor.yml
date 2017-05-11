@@ -16,9 +16,12 @@ build: off
 
 before_build:
   - ps: |
-      Write-Host "Build worker environment variables:" -ForegroundColor Magenta
+      'Write-Host Build worker environment variables: -ForegroundColor Magenta'
       Get-ChildItem Env: | %{"{0}={1}" -f $_.Name,$_.Value}
 
 build_script:
-  - ps: 'Write-Host "Building $env:APPVEYOR_PROJECT_NAME:" -ForegroundColor Magenta'
+  - ps: 'Write-Host Building $env:APPVEYOR_PROJECT_NAME: -ForegroundColor Magenta'
   - cmd: nmake /f Makefile.nmake
+
+test_script:
+  - cmd: .\fuzz_me.exe
