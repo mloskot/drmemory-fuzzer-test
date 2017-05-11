@@ -27,6 +27,7 @@ before_build:
   - ps: |
       Write-Host "Build worker environment variables:" -ForegroundColor Magenta
       Get-ChildItem Env: | %{"{0}={1}" -f $_.Name,$_.Value}
+  - cmd: mkdir .\logs
 
 build_script:
   - ps: 'Write-Host Building $env:APPVEYOR_PROJECT_NAME: -ForegroundColor Magenta'
@@ -38,4 +39,12 @@ test_script:
   - ps: 'Write-Host "Running symquery.exe searching for DrMemoryFuzzerTest:" -ForegroundColor Magenta'
   - cmd: symquery.exe -e fuzz_me.exe -v --searchall -s DrMemoryFuzzerTest
   - ps: 'Write-Host "Running drmemory.exe:" -ForegroundColor Magenta'
-  - cmd: drmemory.exe -verbose 32 -fuzz -fuzz_module fuzz_me.exe -fuzz_function DrMemoryFuzzerTest
+  - cmd: drmemory.exe -verbose 32 -logdir .\logs -fuzz -fuzz_module fuzz_me.exe -fuzz_function DrMemoryFuzzerTest
+
+after_test:
+  - ps: 'Write-Host "Dumping Dr. Memory logs:" -ForegroundColor Magenta'
+  - ps: |
+      Get-ChildItem -Recurse -Path .\logs\DrMemory-fuzz* | % { 
+        Write-Host "####### $_ ######" -ForegroundColor Magenta
+        Get-Content $_
+      }
