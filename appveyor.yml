@@ -39,7 +39,7 @@ test_script:
   - ps: 'Write-Host "Running symquery.exe searching for DrMemoryFuzzerTest:" -ForegroundColor Magenta'
   - cmd: symquery.exe -e fuzz_me.exe -v --searchall -s DrMemoryFuzzerTest
   - ps: 'Write-Host "Running drmemory.exe:" -ForegroundColor Magenta'
-  - cmd: drmemory.exe -quiet -verbose 32 -logdir .\logs -fuzz -fuzz_module fuzz_me.exe -fuzz_function DrMemoryFuzzerTest
+  - cmd: drmemory.exe -quiet -batch -verbose 32 -logdir .\logs -fuzz -fuzz_module fuzz_me.exe -fuzz_function DrMemoryFuzzerTest
 
 after_test:
   - ps: 'Write-Host "Dumping Dr. Memory logs:" -ForegroundColor Magenta'
