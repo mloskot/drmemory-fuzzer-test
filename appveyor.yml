@@ -20,8 +20,7 @@ install:
       msiexec /i $drmemoryMsi /quiet /qn /norestart
       $env:Path += "C:\Program Files (x86)\Dr. Memory\bin"
   - cmd: dir "C:\Program Files (x86)"
-  - cmd: dir "C:\Program Files (x86)\Dr. Memory\bin"
-  - cmd: "C:\Program Files (x86)\Dr. Memory\bin\drmemory.exe" -version
+
 
 build: off
 
