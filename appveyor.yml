@@ -33,4 +33,9 @@ build_script:
   - cmd: nmake /f Makefile.nmake
 
 test_script:
+  - ps: 'Write-Host "Running fuzz_me.exe:" -ForegroundColor Magenta'
   - cmd: .\fuzz_me.exe
+  - ps: 'Write-Host "Running symquery.exe searching for DrMemoryFuzzerTest:" -ForegroundColor Magenta'
+  - cmd: symquery.exe -e fuzz_me.exe -v --searchall -s DrMemoryFuzzerTest
+  - ps: 'Write-Host "Running drmemory.exe:" -ForegroundColor Magenta'
+  - cmd: drmemory.exe -verbose 32 -fuzz -fuzz_module fuzz_me.exe -fuzz_function DrMemoryFuzzerTest
