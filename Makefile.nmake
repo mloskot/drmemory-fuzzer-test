@@ -1,0 +1,17 @@
+# Builds DrFuzzTest
+# Flags after http://drmemory.org/docs/page_prep.html
+
+CC   = cl.exe
+LINK = link.exe
+
+all: fuzz_me.exe
+    $(CC) /Zi /W4 /Ob0 /Oy- /EHsc /MDd /D"_DEBUG" *.cpp
+
+fuzz_me.exe: fuzz_me.obj
+    $(LINK) /VERBOSE /OPT:NOREF /DEBUG:FULL /OUT:fuzz_me.exe fuzz_me.obj
+
+clean:
+	-del *.exe
+    -del *.ilk
+    -del *.obj
+    -del *.pdb
