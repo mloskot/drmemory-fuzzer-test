@@ -15,12 +15,11 @@ init:
 install:
   - ps: |
       Write-Host "Installing Dr. Memory 1.11.0:" -ForegroundColor Magenta
-      $drmemoryMsi = "$($env:TEMP)\DrMemory-Windows-1.11.0-2.msi"
-      (New-Object Net.WebClient).DownloadFile('https://github.com/DynamoRIO/drmemory/releases/download/release_1.11.0/DrMemory-Windows-1.11.0-2.msi', $drmemoryMsi)
-      msiexec /i $drmemoryMsi /quiet /qn /norestart
-      $env:Path += "C:\Program Files (x86)\Dr. Memory\bin"
+      $msiPath = "$($env:USERPROFILE)\DrMemory-Windows-1.11.0-2.msi"
+      (New-Object Net.WebClient).DownloadFile('https://github.com/DynamoRIO/drmemory/releases/download/release_1.11.0/DrMemory-Windows-1.11.0-2.msi', $msiPath)
+      cmd /c start /wait msiexec /i $msiPath /q
+  - cmd: set PATH=%PATH%;"C:\Program Files (x86)\Dr. Memory\bin"
   - cmd: dir "C:\Program Files (x86)"
-
 
 build: off
 
