@@ -13,13 +13,15 @@ init:
   - cmd: call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\Tools\VsDevCmd.bat"
 
 install:
-- ps: |
-    Write-Host "Installing Dr. Memory 1.11.0:" -ForegroundColor Magenta
-    $drmemoryMsi = "$($env:TEMP)\DrMemory-Windows-1.11.0-2.msi"
-    (New-Object Net.WebClient).DownloadFile('https://github.com/DynamoRIO/drmemory/releases/download/release_1.11.0/DrMemory-Windows-1.11.0-2.msi', $drmemoryMsi)
-    msiexec /i $drmemoryMsi /quiet /qn /norestart
-    $env:Path += "C:\Program Files (x86)\Dr. Memory\bin"
-    "C:\Program Files (x86)\Dr. Memory\bin\drmemory.exe" -version
+  - ps: |
+      Write-Host "Installing Dr. Memory 1.11.0:" -ForegroundColor Magenta
+      $drmemoryMsi = "$($env:TEMP)\DrMemory-Windows-1.11.0-2.msi"
+      (New-Object Net.WebClient).DownloadFile('https://github.com/DynamoRIO/drmemory/releases/download/release_1.11.0/DrMemory-Windows-1.11.0-2.msi', $drmemoryMsi)
+      msiexec /i $drmemoryMsi /quiet /qn /norestart
+      $env:Path += "C:\Program Files (x86)\Dr. Memory\bin"
+      dir "C:\Program Files (x86)"
+      dir "C:\Program Files (x86)\Dr. Memory\bin"
+  - cmd: "C:\Program Files (x86)\Dr. Memory\bin\drmemory.exe" -version
 
 build: off
 
