@@ -30,7 +30,7 @@ before_build:
   - cmd: mkdir .\logs
 
 build_script:
-  - ps: 'Write-Host Building $env:APPVEYOR_PROJECT_NAME: -ForegroundColor Magenta'
+  - ps: 'Write-Host "Building $env:APPVEYOR_PROJECT_NAME:" -ForegroundColor Magenta'
   - cmd: nmake /f Makefile.nmake
 
 test_script:
