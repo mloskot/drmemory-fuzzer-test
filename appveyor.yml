@@ -10,7 +10,7 @@ matrix:
 
 init:
   - ps: 'Write-Host "Configuring VS2017 x86 Native environment:" -ForegroundColor Magenta'
-  - cmd: call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\VC\Auxiliary\Build\vcvars32.bat"
+  - cmd: call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\Tools\VsDevCmd.bat"
 
 build: off
 
