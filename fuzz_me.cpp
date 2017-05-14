@@ -28,7 +28,7 @@ void DrMemoryFuzzerTest(unsigned char *data, size_t dataSize)
 
 int main()
 {
-    unsigned char data[] = {'F', 'U', 'Z', 'Z', 'M', 'E'};
+    unsigned char data[] = {'F', 'U', 'Z', 'Z', 'M', 'E', 0};
     DrMemoryFuzzerTest(data, 3);
     return 0;
 }
