@@ -21,6 +21,7 @@ void DrMemoryFuzzerTest(unsigned char *data, size_t dataSize)
 
 int main()
 {
-    DrMemoryFuzzerTest(NULL, 0);
+    //unsigned char data[] = "FUZZ";
+    //DrMemoryFuzzerTest(data, 3);
     return 0;
 }
