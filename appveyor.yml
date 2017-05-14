@@ -19,7 +19,7 @@ install:
       (New-Object Net.WebClient).DownloadFile('https://github.com/DynamoRIO/drmemory/releases/download/release_1.11.0/DrMemory-Windows-1.11.0-2.msi', $msiPath)
       cmd /c start /wait msiexec /i $msiPath /q
   - cmd: set PATH=%PATH%;"C:\Program Files (x86)\Dr. Memory\bin"
-  - cmd: drmemory.exe -version 
+  - cmd: drmemory.exe -version
 
 build: off
 
@@ -39,12 +39,12 @@ test_script:
   - ps: 'Write-Host "Running symquery.exe searching for DrMemoryFuzzerTest:" -ForegroundColor Magenta'
   - cmd: symquery.exe -e fuzz_me.exe -v --searchall -s DrMemoryFuzzerTest
   - ps: 'Write-Host "Running drmemory.exe:" -ForegroundColor Magenta'
-  - cmd: drmemory.exe -quiet -batch -verbose 3 -logdir .\logs -fuzz -fuzz_function DrMemoryFuzzerTest -- fuzz_me.exe 
+  - cmd: drmemory.exe -quiet -batch -verbose 3 -logdir logs -fuzz -fuzz_function DrMemoryFuzzerTest -- fuzz_me.exe
 
 after_test:
   - ps: 'Write-Host "Dumping Dr. Memory logs:" -ForegroundColor Magenta'
   - ps: |
-      Get-ChildItem -Recurse -Path .\logs\DrMemory-fuzz* | % { 
+      Get-ChildItem -Recurse -Path .\logs\DrMemory-fuzz* | % {
         Write-Host "####### $_ ######" -ForegroundColor Magenta
         Get-Content $_
       }
