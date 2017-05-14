@@ -8,7 +8,7 @@ all: fuzz_me.exe
     $(CC) /Zi /W4 /Ob0 /Oy- /EHsc /MDd /D"_DEBUG" *.cpp
 
 fuzz_me.exe: fuzz_me.obj
-    $(LINK) /VERBOSE /OPT:NOREF /DEBUG:FULL /OUT:fuzz_me.exe fuzz_me.obj
+    $(LINK) /OPT:NOREF /DEBUG:FULL /OUT:fuzz_me.exe fuzz_me.obj
 
 clean:
 	-del *.exe
