@@ -5,7 +5,7 @@
 
 bool FuzzMe(unsigned char *data, size_t dataSize)
 {
-    printf("%s: dataSize=%u\n", __func__, dataSize);
+    printf("%s: dataSize=%u, data=%.50s\n", __func__, dataSize, data);
     return dataSize > 0 &&
         data[0] == 'F' &&
         data[1] == 'U' &&
