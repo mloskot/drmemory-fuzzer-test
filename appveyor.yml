@@ -24,9 +24,9 @@ install:
 build: off
 
 before_build:
-  - ps: |
-      Write-Host "Build worker environment variables:" -ForegroundColor Magenta
-      Get-ChildItem Env: | %{"{0}={1}" -f $_.Name,$_.Value}
+  #- ps: |
+  #    Write-Host "Build worker environment variables:" -ForegroundColor Magenta
+  #    Get-ChildItem Env: | %{"{0}={1}" -f $_.Name,$_.Value}
   - cmd: mkdir .\logs
 
 build_script:
