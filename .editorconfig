@@ -1,0 +1,24 @@
+# EditorConfig is awesome: http://EditorConfig.org
+
+# top-most EditorConfig file
+root = true
+
+# C/C++ source files
+[*.{cpp,h}]
+indent_style = space
+indent_size = 4
+max_line_length = 100
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# CI configuration files
+[{.travis.yml,appveyor.yml,Vagrantfile}]
+indent_size = 2
+indent_style = space
+trim_trailing_whitespace = true
+
+# tabs 2 spaces for makefiles
+[Makefile*]
+indent_style = spaces
+indent_size = 4
+trim_trailing_whitespace = true
