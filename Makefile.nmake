@@ -11,7 +11,7 @@ fuzz_me.exe: fuzz_me.obj
     $(LINK) /OPT:NOREF /DEBUG:FULL /OUT:fuzz_me.exe fuzz_me.obj
 
 clean:
-	-del *.exe
+    -del *.exe
     -del *.ilk
     -del *.obj
     -del *.pdb
