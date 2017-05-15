@@ -19,6 +19,6 @@ trim_trailing_whitespace = true
 
 # tabs 2 spaces for makefiles
 [Makefile*]
-indent_style = spaces
+indent_style = tab
 indent_size = 4
 trim_trailing_whitespace = true

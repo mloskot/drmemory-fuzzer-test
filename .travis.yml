@@ -1,0 +1,23 @@
+language: cpp
+
+addons:
+  apt:
+    packages:
+    - g++-multilib
+
+install:
+  - wget https://github.com/DynamoRIO/drmemory/releases/download/release_1.11.0/DrMemory-Linux-1.11.0-2.tar.gz
+  - tar xzf DrMemory-Linux-1.11.0-2.tar.gz
+  - export PATH="$PWD/DrMemory-Linux-1.11.0-2/bin:$PATH"
+
+before_script:
+  - drmemory -version
+  - mkdir logs
+
+script:
+  - make -f Makefile
+
+after_success:
+  - ./fuzz_me
+  - symquery -e fuzz_me -v --searchall -s DrMemoryFuzzerTest
+  - drmemory -quiet -batch -verbose 3 -logdir logs -fuzz -fuzz_function DrMemoryFuzzerTest -- fuzz_me
