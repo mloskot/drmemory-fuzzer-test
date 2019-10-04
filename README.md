@@ -3,7 +3,7 @@
 [![Travis CI](https://travis-ci.org/mloskot/drmemory-fuzzer-test.svg?branch=master)](https://travis-ci.org/mloskot/drmemory-fuzzer-test)
 [![AppVeyor](https://ci.appveyor.com/api/projects/status/yif1aupyhskg80wa/branch/master?svg=true)](https://ci.appveyor.com/project/mloskot/drmemory-fuzzer-test/branch/master)
 
-Testing Dr. Memory fuzz testing capabilities on Windows and Linux.
+Testing [Dr. Memory](https://github.com/DynamoRIO/drmemory) fuzz testing capabilities on Windows and Linux.
 
 See [Dr. Memory's fuzz testing Windows with .exe](https://groups.google.com/d/msg/drmemory-users/0K3ul1U_pKo/6rNG6oRVBgAJ)
 thread for detailed discussion.
